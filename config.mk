@@ -1,5 +1,5 @@
 # st version
-VERSION = 0.8.4
+VERSION = 0.8.5
 
 # Customize below to fit your system
 
@@ -23,18 +23,18 @@ LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft \
        `$(PKG_CONFIG) --libs harfbuzz`
 
 # flags
+CFLAGS = -Ofast -march-native -pipe
+LDFLAGS = -Wl,-Ofast,--sort-common,--as-needed,-z,relro,-z,now
+
 STCPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600
 STCFLAGS = $(INCS) $(STCPPFLAGS) $(CPPFLAGS) $(CFLAGS)
 STLDFLAGS = $(LIBS) $(LDFLAGS)
 
 # OpenBSD:
-CFLAGS = -march=native -O3 -pipe -fno-plt -static
-LDFLAGS = -Wl,-O3,--sort-common,--as-needed,-z,relro,-z,now,-s
-#CPPFLAGS = $(CFLAGS)
 #CPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600 -D_BSD_SOURCE
 #LIBS = -L$(X11LIB) -lm -lX11 -lutil -lXft \
 #       `$(PKG_CONFIG) --libs fontconfig` \
 #       `$(PKG_CONFIG) --libs freetype2`
 
 # compiler and linker
-#CC = clang
+# CC = c99

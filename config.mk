@@ -23,7 +23,7 @@ LIBS = -L$(X11LIB) -lm -lrt -lX11 -lutil -lXft \
        `$(PKG_CONFIG) --libs harfbuzz`
 
 # flags
-CFLAGS = -Ofast -march-native -pipe
+CFLAGS = -Ofast -march=native -pipe
 LDFLAGS = -Wl,-Ofast,--sort-common,--as-needed,-z,relro,-z,now
 
 STCPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600
